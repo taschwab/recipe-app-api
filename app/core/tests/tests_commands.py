@@ -31,4 +31,4 @@ def test_wait_for_db_delay(self, patched_sleep, patched_check):
     call_command('wait_for_db')
 
     self.assertEqual(patched_check.call_count, 6)
-    patch_check.assert_called_with(database=['default'])
+    patched_check.assert_called_with(database=['default'])
