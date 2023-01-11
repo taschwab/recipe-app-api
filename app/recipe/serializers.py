@@ -9,6 +9,7 @@ from core.models import (
     Ingredient,
 )
 
+
 class IngredientSerializer(serializers.ModelSerializer):
     """Serializer for ingredients."""
 
@@ -39,6 +40,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             'ingredients',
         ]
         read_only_fields = ['id']
+
 
 class RecipeDetailSerializer(RecipeSerializer):
     """Serializer for recipe detail view."""
@@ -85,6 +87,7 @@ class RecipeDetailSerializer(RecipeSerializer):
             instance.tags.clear()
             self._get_or_create_tags(tags, instance)
         if ingredients is not None:
+            instance.ingredients.clear()
             self._get_or_create_ingredients(ingredients, instance)
 
         for attr, value in validated_data.items():
